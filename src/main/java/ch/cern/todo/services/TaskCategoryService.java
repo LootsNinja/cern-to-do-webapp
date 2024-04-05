@@ -5,9 +5,9 @@ import ch.cern.todo.dtos.TaskCategoryDto;
 import java.util.List;
 
 public interface TaskCategoryService {
-    List<TaskCategoryDto> getTaskCategories(String taskCategoryName);
-
     TaskCategoryDto createTaskCategory(TaskCategoryDto taskCategoryModel);
+
+    List<TaskCategoryDto> getTaskCategories(String taskCategoryName);
 
     TaskCategoryDto getTaskCategoryById(Long id);
 

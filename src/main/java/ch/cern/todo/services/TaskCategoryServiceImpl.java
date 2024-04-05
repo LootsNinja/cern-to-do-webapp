@@ -17,13 +17,6 @@ import java.util.Optional;
 public class TaskCategoryServiceImpl implements TaskCategoryService {
     private final TaskCategoryRepository taskCategoryRepository;
 
-    public List<TaskCategoryDto> getTaskCategories(String taskCategoryName) {
-        if (taskCategoryName != null && !taskCategoryName.isBlank()) {
-            return taskCategoryRepository.findTaskCategoryByCategoryName(taskCategoryName).stream().map(TaskCategoryModel::toTaskCategoryDto).toList();
-        }
-        return taskCategoryRepository.findAll().stream().map(TaskCategoryModel::toTaskCategoryDto).toList();
-    }
-
     public TaskCategoryDto createTaskCategory(TaskCategoryDto taskCategoryDto) {
         if (taskCategoryDto.getCategoryName() != null && !taskCategoryDto.getCategoryName().isBlank()) {
             Optional<TaskCategoryModel> optionalTaskCategory = taskCategoryRepository.findTaskCategoryByCategoryName(taskCategoryDto.getCategoryName()).stream().findAny();
@@ -33,6 +26,13 @@ public class TaskCategoryServiceImpl implements TaskCategoryService {
         }
 
         return taskCategoryRepository.save(taskCategoryDto.toTaskCategoryModel()).toTaskCategoryDto();
+    }
+
+    public List<TaskCategoryDto> getTaskCategories(String taskCategoryName) {
+        if (taskCategoryName != null && !taskCategoryName.isBlank()) {
+            return taskCategoryRepository.findTaskCategoryByCategoryName(taskCategoryName).stream().map(TaskCategoryModel::toTaskCategoryDto).toList();
+        }
+        return taskCategoryRepository.findAll().stream().map(TaskCategoryModel::toTaskCategoryDto).toList();
     }
 
     @Override
