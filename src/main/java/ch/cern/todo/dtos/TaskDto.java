@@ -1,0 +1,49 @@
+package ch.cern.todo.dtos;
+
+import ch.cern.todo.models.TaskModel;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class TaskDto {
+    private Long taskId;
+
+    @NotBlank
+    private String taskName;
+
+    private String taskDescription;
+
+    // Format yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime deadline;
+
+    private Long taskCategoryId;
+
+    private String taskCategoryName;
+
+    public TaskModel toTaskModel() {
+        return TaskModel.builder()
+                .taskId(this.getTaskId())
+                .taskName(this.getTaskName())
+                .taskDescription(this.getTaskDescription())
+                .deadline(this.getDeadline() == null ? null : Timestamp.valueOf(this.getDeadline()))
+                .taskCategory(TaskCategoryDto.builder()
+                        .categoryId(this.getTaskCategoryId())
+                        .categoryName(this.getTaskCategoryName())
+                        .build().toTaskCategoryModel())
+                .build();
+    }
+
+}

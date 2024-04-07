@@ -36,7 +36,7 @@ public class TaskCategoryModel {
     @JdbcTypeCode(value = NUMERIC)
     private Long categoryId;
 
-    @Column(name = CATEGORY_NAME, nullable = false, length = 100, unique = true)
+    @Column(name = CATEGORY_NAME, nullable = false, updatable = false, length = 100, unique = true)
     private String categoryName;
 
     @Column(name = CATEGORY_DESCRIPTION, length = 500)

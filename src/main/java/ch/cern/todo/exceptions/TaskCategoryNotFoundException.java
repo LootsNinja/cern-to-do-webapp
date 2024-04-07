@@ -8,4 +8,8 @@ public class TaskCategoryNotFoundException extends ApplicationException {
     public TaskCategoryNotFoundException(final Long id) {
         super(NOT_FOUND, CATEGORY_NOT_FOUND_ERROR_MESSAGE.formatted(id));
     }
+
+    public TaskCategoryNotFoundException(final String taskCategoryName) {
+        super(NOT_FOUND, CATEGORY_NOT_FOUND_ERROR_MESSAGE.formatted(taskCategoryName));
+    }
 }
