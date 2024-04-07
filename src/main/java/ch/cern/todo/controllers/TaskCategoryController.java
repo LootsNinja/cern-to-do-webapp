@@ -42,7 +42,6 @@ public class TaskCategoryController {
 
     @PutMapping(ID_PATH_PARAMETER)
     public ApiResponse<Long> updateTaskCategory(@PathVariable Long id, @RequestBody TaskCategoryDto taskCategory) {
-        taskCategory.setCategoryId(id);
         return ApiResponse.ok(taskCategoryService.updateTaskCategory(id, taskCategory));
     }
 }
