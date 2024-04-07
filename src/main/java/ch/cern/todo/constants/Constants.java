@@ -7,6 +7,9 @@ public class Constants {
     public static final String ID_PATH_PARAMETER = "/{id}";
 
     // Tables
+    public static final String COLUMN_TYPE_NUMBER = "NUMBER";
+    public static final String TASK_CATEGORY_SEQ = "TASK_CATEGORY_SEQ";
+    public static final String TASK_SEQ = "TASK_SEQ";
     // TASKS table
     public static final String TASKS_TABLE_NAME = "tasks";
     public static final String TASK_ID = "task_id";

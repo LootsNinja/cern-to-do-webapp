@@ -15,10 +15,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
 
-import static ch.cern.todo.constants.Constants.CATEGORY_DESCRIPTION;
-import static ch.cern.todo.constants.Constants.CATEGORY_ID;
-import static ch.cern.todo.constants.Constants.CATEGORY_NAME;
-import static ch.cern.todo.constants.Constants.TASK_CATEGORY_TABLE_NAME;
+import static ch.cern.todo.constants.Constants.*;
 import static java.sql.Types.NUMERIC;
 
 @Entity
@@ -28,11 +25,11 @@ import static java.sql.Types.NUMERIC;
 @NoArgsConstructor
 @EqualsAndHashCode
 @Table(name = TASK_CATEGORY_TABLE_NAME)
-@SequenceGenerator(name = "task_category_seq", sequenceName = "TASK_CATEGORY_SEQ", allocationSize = 1)
+@SequenceGenerator(name = TASK_CATEGORY_SEQ, sequenceName = TASK_CATEGORY_SEQ, allocationSize = 1)
 public class TaskCategoryModel {
     @Id
-    @Column(name = CATEGORY_ID, updatable = false, columnDefinition = "INT")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_category_seq")
+    @Column(name = CATEGORY_ID, updatable = false, columnDefinition = COLUMN_TYPE_NUMBER)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TASK_CATEGORY_SEQ)
     @JdbcTypeCode(value = NUMERIC)
     private Long categoryId;
 

@@ -20,12 +20,12 @@ import static java.sql.Types.NUMERIC;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = TASKS_TABLE_NAME)
-@SequenceGenerator(name = "task_seq", sequenceName = "TASK_SEQ", allocationSize = 1)
+@SequenceGenerator(name = TASK_SEQ, sequenceName = TASK_SEQ, allocationSize = 1)
 public class TaskModel {
 
     @Id
-    @Column(name = TASK_ID, updatable = false, columnDefinition = "NUMBER")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "task_seq")
+    @Column(name = TASK_ID, updatable = false, columnDefinition = COLUMN_TYPE_NUMBER)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = TASK_SEQ)
     @JdbcTypeCode(value = NUMERIC)
     private Long taskId;
 
