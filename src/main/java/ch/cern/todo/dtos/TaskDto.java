@@ -1,13 +1,13 @@
 package ch.cern.todo.dtos;
 
 import ch.cern.todo.models.TaskModel;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
@@ -25,8 +25,7 @@ public class TaskDto {
 
     private String taskDescription;
 
-    // Format yyyy-MM-dd'T'HH:mm:ss.SSSXXX
-    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime deadline;
 
     private Long taskCategoryId;
