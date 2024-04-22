@@ -1,0 +1,25 @@
+.component-border {
+  border: 1px solid #000; /* Change color as needed */
+  margin: 20px; /* Adjust as needed */
+  padding: 10px; /* Adjust as needed */
+}
+
+.card-border {
+  border: 1px solid #000; /* Change color as needed */
+  margin: 3px; /* Adjust as needed */
+  padding: 3px; /* Adjust as needed */
+}
+
+.container {
+  display: flex;
+  height: 98vh;
+}
+
+.half {
+  flex: 1;
+  border: 1px solid black;
+  padding: 10px;
+  height: 100%;
+  overflow-y: auto;
+}
+
