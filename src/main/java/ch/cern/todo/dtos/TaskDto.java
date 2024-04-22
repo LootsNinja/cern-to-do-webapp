@@ -38,11 +38,12 @@ public class TaskDto {
                 .taskName(this.getTaskName())
                 .taskDescription(this.getTaskDescription())
                 .deadline(this.getDeadline() == null ? null : Timestamp.valueOf(this.getDeadline()))
-                .taskCategory(TaskCategoryDto.builder()
-                        .categoryId(this.getTaskCategoryId())
-                        .categoryName(this.getTaskCategoryName())
-                        .build().toTaskCategoryModel())
+                .taskCategory(this.getTaskCategoryName() == null && this.getTaskCategoryId() == null ?
+                        null :
+                        TaskCategoryDto.builder()
+                                .categoryId(this.getTaskCategoryId())
+                                .categoryName(this.getTaskCategoryName())
+                                .build().toTaskCategoryModel())
                 .build();
     }
-
 }
